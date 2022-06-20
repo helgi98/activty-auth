@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: org.helgi
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [ annotation-api, app-name, consul, data, data-jdbc, discovery-consul, gradle, http-client, jackson-databind, jdbc-hikari, junit, kotlin, kotlin-application, kotlin-build, kotlin-extension-functions, log4j2, micronaut-build, netty-server, postgres, readme, security-annotations, security-jwt, shade, testcontainers, yaml ]

@@ -1,0 +1,36 @@
+micronaut:
+  application:
+    name: ActivtyAuth
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOneNO}
+        generator:
+          refresh-token:
+            secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOneNO}
+  server:
+    context-path: /api
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/activity_db
+    driverClassName: org.postgresql.Driver
+    username: activity_postgres
+    password: password
+    dialect: POSTGRES
+#consul:
+#  client:
+#    defaultZone: ${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}
+#    registration:
+#      enabled: true
+netty:
+  default:
+    allocator:
+      max-order: 3
+flyway:
+  datasources:
+    default:
+      enabled: true
