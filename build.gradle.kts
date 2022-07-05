@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.allopen") version "1.6.21"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.4.1"
+    kotlin("plugin.jpa") version "1.6.21"
 }
 
 version = "0.1"
@@ -15,8 +16,6 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut.data:micronaut-data-processor")
-
     kapt("io.micronaut.data:micronaut-data-processor")
     kapt("io.micronaut:micronaut-http-validation")
     kapt("io.micronaut.security:micronaut-security-annotations")

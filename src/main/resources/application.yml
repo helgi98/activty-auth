@@ -16,7 +16,7 @@ micronaut:
     context-path: /api
 datasources:
   default:
-    url: jdbc:postgresql://localhost:5432/activity_db
+    url: jdbc:postgresql://localhost:5432/activity_auth
     driverClassName: org.postgresql.Driver
     username: activity_postgres
     password: password
@@ -30,6 +30,15 @@ netty:
   default:
     allocator:
       max-order: 3
+jpa:
+  default:
+    packages-to-scan:
+      - 'org.helgi.entity'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+        show_sql: true
 flyway:
   datasources:
     default:

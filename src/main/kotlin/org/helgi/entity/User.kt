@@ -13,19 +13,22 @@ data class Permission(
 )
 
 @Entity
+@Table(name = "app_user")
 data class User(
+    @NotBlank
+    var username: String,
+    @NotBlank
+    var password: String,
     @Id
-    @GeneratedValue
-    val id: Long,
-    @NotBlank
-    val username: String,
-    @NotBlank
-    val password: String,
-    @ManyToMany
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_permission",
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "permission_id")]
     )
-    val permissions: Set<Permission>
-)
+    private var permissions: Set<Permission>? = null
+) {
+    fun getPermissions() = permissions ?: emptySet()
+}

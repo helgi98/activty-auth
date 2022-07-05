@@ -5,11 +5,13 @@ import io.micronaut.security.errors.IssuingAnAccessTokenErrorCode.INVALID_GRANT
 import io.micronaut.security.errors.OauthErrorResponseException
 import io.micronaut.security.token.event.RefreshTokenGeneratedEvent
 import io.micronaut.security.token.refresh.RefreshTokenPersistence
+import jakarta.inject.Singleton
 import org.helgi.repository.RefreshTokenRepository
 import org.reactivestreams.Publisher
 import reactor.core.publisher.Flux
 import reactor.core.publisher.FluxSink
 
+@Singleton
 class DbRefreshTokenPersistence(private val repo: RefreshTokenRepository) : RefreshTokenPersistence {
     override fun persistToken(event: RefreshTokenGeneratedEvent) {
         if (event.refreshToken != null && event.authentication?.name != null) {
