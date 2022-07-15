@@ -3,10 +3,9 @@ package org.helgi.service
 import io.micronaut.security.authentication.Authentication
 import jakarta.inject.Singleton
 import org.helgi.dto.RegisterForm
-import org.helgi.dto.TokenCheck
 import org.helgi.dto.UserData
+import org.helgi.entity.Permission
 import org.helgi.exception.ConflictException
-import org.helgi.exception.NotFoundException
 import org.helgi.repository.UserRepository
 import org.helgi.util.hashPassword
 
@@ -25,7 +24,7 @@ class UserService(private val userRepository: UserRepository) {
     fun getUserData(authentication: Authentication): UserData {
         return userRepository.findByUsername(authentication.name).map {
             it.run {
-                UserData(username, null)
+                UserData(username, getPermissions().map(Permission::name).toSet())
             }
         }.get()
     }

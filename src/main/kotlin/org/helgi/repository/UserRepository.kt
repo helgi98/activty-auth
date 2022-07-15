@@ -7,7 +7,6 @@ import org.helgi.entity.User
 import java.util.*
 import javax.transaction.Transactional
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotEmpty
 
 @Repository
 interface UserRepository : CrudRepository<User, Long> {

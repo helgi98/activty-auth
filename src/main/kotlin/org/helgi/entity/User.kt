@@ -21,7 +21,7 @@ data class User(
     var password: String,
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    private var id: Long? = null,
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_permission",
@@ -31,4 +31,5 @@ data class User(
     private var permissions: Set<Permission>? = null
 ) {
     fun getPermissions() = permissions ?: emptySet()
+    fun getId() = id ?: 0
 }

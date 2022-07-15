@@ -21,11 +21,11 @@ datasources:
     username: activity_postgres
     password: password
     dialect: POSTGRES
-#consul:
-#  client:
-#    defaultZone: ${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}
-#    registration:
-#      enabled: true
+consul:
+  client:
+    defaultZone: ${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}
+    registration:
+      enabled: true
 netty:
   default:
     allocator:
